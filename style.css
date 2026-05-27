@@ -1,0 +1,281 @@
+/* 기본 레이아웃: 로블록스 전용 페이지 스타일 */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 45px;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-img {
+    height: 130px; /* 상단 바 높이에 맞춰 조절하세요 */
+    width: auto;   /* 가로 비율은 자동으로 맞춤 */
+    margin-right: 40px;
+	margin-left: -40px;
+    display: block;
+}
+
+.navbar a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* 상단 바 우측 버튼 영역을 사진과 더 비슷하게 정렬 */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 버튼 사이 간격 */
+}
+
+/* 차트 버튼 */
+#button1 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+	font-weight: 500;
+}
+
+/* 마켓플레이스 버튼 */
+#button2 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+	font-weight: 500;
+	margin-left: 80px;
+}
+
+/* 만들기 버튼 */
+#button3 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+	font-weight: 500;
+	margin-left: 80px;
+}
+
+/* Robux 버튼 */
+#button4 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+	font-weight: 550;
+	margin-left: 80px;
+}
+
+/* 회원가입/로그인 버튼 스타일 */
+.nav-btn {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.signup-btn {
+    background-color: #0084ff; /* 로블록스 블루 */
+    color: white;
+}
+
+.login-btn-top {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #555;
+}
+
+/* 창 너비가 800px 이하가 되면 실행 */
+@media (max-width: 1000px) {
+    /* 1. 메뉴 텍스트들을 숨기거나 글자 크기를 줄임 */
+    .nav-left a {
+        display: none; /* 메뉴 글씨가 뭉개지기 전에 아예 숨깁니다 */
+    }
+    
+    /* 2. 로고와 검색창 사이의 간격 조정 */
+    .navbar {
+        padding: 0 10px;
+    }
+    
+    /* 3. 모바일용 햄버거 메뉴 버튼을 추가하고 싶다면 여기서 구현 */
+}
+
+
+/* 배경 타일 */
+.tile-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('loginpage.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* 로그인 박스: 직각 모서리 & 어두운 배경 */
+.login-container {
+    background-color: #1e2129;
+    padding: 40px;
+    width: 300px;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Roblox에 로그인 글씨 */
+h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 32px; /* 이 숫자를 키우면 글씨가 더 커집니다 */
+}
+
+/* 입력 필드 */
+.input-group {
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: white;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #0084ff;
+    outline: none;
+}
+
+/* 로그인 버튼: 사진처럼 회색 톤 유지 */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #393b3d;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 0;
+}
+
+.login-btn:hover {
+    background-color: #4a4d50;
+}
+
+/* 기타 링크 및 구분선 */
+.extra-links a, .signup-link a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #333;
+    margin: 20px 0;
+}
+
+.other-login button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: transparent;
+    color: #ccc;
+    border-radius: 0;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal-content {
+    background: #23252a;
+    padding: 20px;
+    border: 1px solid #444;
+    color: white;
+    width: 300px;
+    text-align: center;
+}
+.modal-content button {
+    background: #0084ff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+
+/* 에러 메시지 */
+#error-message {
+    height: 20px;
+    color: #ff3333;
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* 로딩 애니메이션 (그대로 유지) */
+.roblox-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    height: 30px;
+}
+.cube {
+    width: 10px;
+    height: 10px;
+    background-color: #888;
+    border-radius: 2px;
+    animation: growAndFade 1.5s infinite;
+}
+.cube:nth-child(1) { animation-delay: 0s; }
+.cube:nth-child(2) { animation-delay: 0.5s; }
+.cube:nth-child(3) { animation-delay: 1.0s; }
+@keyframes growAndFade {
+    0%, 33% { transform: scaleY(1); background-color: #888; }
+    16% { transform: scaleY(1.3); background-color: white; }
+}

